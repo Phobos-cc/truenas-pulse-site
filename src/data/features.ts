@@ -174,6 +174,14 @@ export const features: Feature[] = [
       "See when problems started and why. 30 days of CPU, memory, and network history to trace any incident. Free includes 1H.",
   },
   {
+    id: "protectionAudit",
+    name: "Protection Audit",
+    category: "Operator Productivity",
+    tier: "Pro",
+    description:
+      "Know what is actually recoverable. Pro maps shares, apps, and servers to the recovery gaps that need attention.",
+  },
+  {
     id: "storageRunway",
     name: "Storage Runway",
     category: "Operator Productivity",
