@@ -14,6 +14,11 @@ export interface ChangelogEntry {
 
 export const changelog: ChangelogEntry[] = [
   {
+    "version": "1.0.6",
+    "releaseDate": "2026-09-10",
+    "whatsNew": "• Added a new Protection Audit view for Pro users — fleet-wide rollups and history summaries covering backups, snapshots, and replication health.\n• Improved dashboard, reporting, and connection reliability, with smoother refreshes and fewer duplicate action submissions.\n• Refined storage diagnostics, control prompts, and status wording throughout the app.\n• Polished workload and inventory views, empty states, and alert copy.\n• Fixed a dashboard overview caching issue that could show stale data after switching servers."
+  },
+  {
     "version": "1.0.5",
     "releaseDate": "2026-05-12",
     "whatsNew": "•\tAdded richer disk, app workload, container, and protection audit details.\n•\tImproved dashboard, reporting, fleet, and data protection performance.\n•\tHardened server switching, WebSocket cancellation, refresh behavior, and stale data handling.\n•\tStrengthened Cloud Push enrollment, relay security, and connection error feedback.\n•\tFixed duplicate guarded action submissions and several runtime action edge cases.\n•\tRefined empty states, alert copy, diagnostics, storage guidance, and operation status wording throughout the app."
