@@ -10,19 +10,19 @@
  */
 @theme {
   /* ── Surface hierarchy (dark-first) ─────────────────────────── */
-  --color-bg: oklch(0.13 0 0);                /* near-black, app background analogue */
-  --color-bg-elevated: oklch(0.165 0 0);      /* groupedBackground */
-  --color-surface: oklch(0.20 0 0);           /* card / row fill */
-  --color-surface-raised: oklch(0.245 0 0);   /* sheets, modal cards */
-  --color-surface-membership: oklch(0.225 0 0); /* monetization cards */
+  --color-bg: oklch(0.14 0.014 250);                /* near-black, app background analogue */
+  --color-bg-elevated: oklch(0.175 0.016 250);      /* groupedBackground */
+  --color-surface: oklch(0.205 0.018 250);           /* card / row fill */
+  --color-surface-raised: oklch(0.25 0.018 250);   /* sheets, modal cards */
+  --color-surface-membership: oklch(0.23 0.018 250); /* monetization cards */
 
   --color-stroke-soft: oklch(1 0 0 / 0.06);
   --color-stroke-strong: oklch(1 0 0 / 0.10);
 
   /* ── Text ───────────────────────────────────────────────────── */
   --color-text: oklch(1 0 0 / 0.96);
-  --color-text-secondary: oklch(0.74 0.01 250 / 0.88);
-  --color-text-tertiary: oklch(0.62 0.01 250 / 0.66);
+  --color-text-secondary: oklch(0.82 0.02 250 / 0.92);
+  --color-text-tertiary: oklch(0.70 0.02 250 / 0.78);
   --color-text-disabled: oklch(0.45 0 0 / 0.55);
 
   /* ── Interactive accent ─────────────────────────────────────── */

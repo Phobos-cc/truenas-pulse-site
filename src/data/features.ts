@@ -153,7 +153,7 @@ export const features: Feature[] = [
     category: "Advanced Control",
     tier: "Pro",
     description:
-      "Abort running middleware jobs that need operator intervention.",
+      "Stop a stuck or runaway TrueNAS job from your phone.",
   },
 
   // ── Operator Productivity (everyday leverage) ───────────────────
