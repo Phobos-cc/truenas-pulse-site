@@ -3,7 +3,7 @@ import BaseLayout from "~/components/BaseLayout.astro";
 import Section from "~/components/Section.astro";
 import MotionReveal from "~/components/MotionReveal.astro";
 import { changelog } from "~/data/changelog";
-import { site } from "~/data/site";
+import { site, upcomingRelease } from "~/data/site";
 
 // Format an ISO date as "25 April 2026" — calmer than US/EU number forms.
 const formatDate = (iso: string): string => {
@@ -42,6 +42,19 @@ const toBullets = (whatsNew: string): string[] => {
       historical records, not a list of currently available features. Notifications
       are now device-local, with best effort background refresh subject to iOS scheduling.
     </p>
+    <section aria-labelledby="upcoming-release" class="mb-8 rounded-xl border border-stroke-soft bg-surface-raised p-5">
+      <p class="mb-2 text-xs uppercase tracking-wider text-accent">{upcomingRelease.status}</p>
+      <h2 id="upcoming-release" class="mb-3 text-xl font-semibold text-text-primary">Version {upcomingRelease.version}</h2>
+      <p class="mb-4 text-sm leading-relaxed text-text-secondary">{upcomingRelease.summary}</p>
+      <ul class="changelog-bullets">
+        {upcomingRelease.notes.map((note) => (
+          <li>
+            <span class="changelog-bullet" aria-hidden="true" />
+            <span>{note}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
     <ol class="changelog-list">
       {
         changelog.map((entry, i) => {

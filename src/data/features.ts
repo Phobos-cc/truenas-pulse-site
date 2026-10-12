@@ -121,7 +121,7 @@ export const features: Feature[] = [
     category: "Advanced Control",
     tier: "Free",
     description:
-      "Start, stop, and force-stop TrueNAS 26 native containers — included in the free tier.",
+      "Start, stop, and force-stop TrueNAS 26/27 native containers where available — included in the free tier.",
   },
   {
     id: "dataProtectionEditing",

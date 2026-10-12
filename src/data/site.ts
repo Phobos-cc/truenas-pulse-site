@@ -29,6 +29,21 @@ export const site = {
   trustLine: "One-time purchase. No subscription. No tracking.",
 } as const;
 
+/** Prepared App Store draft; kept separate from the published release history. */
+export const upcomingRelease = {
+  version: "1.0.7",
+  status: "In preparation",
+  summary: "TrueNAS Pulse 1.0.7 improves reliability, verifies TrueNAS 27.0.0-RC.1 compatibility, and removes Cloud Push.",
+  notes: [
+    "Verified compatibility with TrueNAS 27.0.0-RC.1 for monitoring and reporting.",
+    "Release-candidate version labels now retain their RC suffix.",
+    "Improved snapshot loading when requests overlap or the active server changes.",
+    "Hardened diagnostic redaction for secrets containing escaped quotes.",
+    "Improved Control Mode checks, server attribution, and widget reliability.",
+    "Cloud Push has been removed. Alert, job, and fleet notifications are delivered by the app on your iPhone. If you had enabled Cloud Push, the app retires the recorded relay API key on your server and removes its local relay data. Check the Action Log for any manual cleanup needed.",
+  ],
+} as const;
+
 export const navLinks = [
   { href: "/features", label: "Features" },
   { href: "/screenshots", label: "Screenshots" },
