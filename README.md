@@ -31,6 +31,8 @@ scripts/
   generate-assets.mjs   sharp pipeline: favicon + apple-touch + og from 1024 master
 .gitea/workflows/
   deploy.yml     self-hosted Gitea Actions runner — bun build → rsync to LXC 132
+.github/workflows/
+  deploy.yml     GitHub Actions — bun build → Cloudflare Pages production
 ```
 
 ## Local development
@@ -68,24 +70,26 @@ never playful**.
 
 ## Deployment
 
-`.gitea/workflows/deploy.yml` runs on every push to `main`:
+Push `main` to Gitea `phobos/truenas-pulse-site`; its mirror publishes the same
+commit to GitHub [`Phobos-cc/truenas-pulse-site`](https://github.com/Phobos-cc/truenas-pulse-site).
+Two independent workflows build the static site:
 
-1. Self-hosted runner clones the repo
-2. Installs Bun (cached after first run)
-3. `bun install --frozen-lockfile`
-4. `bun run build`
-5. Rsync `dist/` to LXC 132 `prox-web` at `/var/www/pulse-site/`
-6. `chown -R caddy:caddy` + `systemctl restart caddy`
-7. End-to-end smoke probes 5 pages — fail closed on any non-200
+- **Public production:** `.github/workflows/deploy.yml` builds with Bun and uses
+  [`cloudflare/wrangler-action`](https://github.com/cloudflare/wrangler-action)
+  to run `pages deploy dist --project-name=truenas-pulse-site --branch=main`.
+  Cloudflare Pages serves **https://truenaspulse.com**. GitHub stores the
+  `CLOUDFLARE_API_TOKEN` secret; the account ID is configured in the workflow.
+- **Homelab origin copy:** `.gitea/workflows/deploy.yml` runs on the self-hosted
+  runner, builds with Bun, and rsyncs `dist/` to LXC 132 (`192.168.0.93`) at
+  `/var/www/pulse-site/`. It updates Caddy ownership and inline-script CSP hashes,
+  validates/reloads Caddy, and smoke-probes six origin pages with the production
+  Host header. Gitea stores `DEPLOY_SSH_KEY` and `DEPLOY_HOST` secrets.
 
-Secrets used:
-
-- `DEPLOY_SSH_KEY` — Ed25519 private key, public side in LXC 132
-  `/root/.ssh/authorized_keys`
-- `DEPLOY_HOST` — `192.168.0.93`
-
-The Cloudflare tunnel `phobos-home` routes `truenaspulse.com` (and legacy `pulse.phobos-cc.be`) →
-`http://192.168.0.93:80` (LXC 132 → Caddy 2 serving the static build).
+The legacy `https://pulse.phobos-cc.be` URL redirects to public production. A
+successful Gitea origin deployment alone does not confirm that Cloudflare Pages
+published the change. Verify the GitHub Actions run and live public pages before
+claiming a completed publication; preserve the source commit and build hashes.
+Back up `/var/www/pulse-site/` and `/etc/caddy/Caddyfile` before changing the origin.
 
 ## Trademark
 

@@ -41,6 +41,7 @@ src/styles/       global.css (single @theme + tiny utilities)
 public/           favicon set, og-image.png, site.webmanifest, robots.txt, screenshots/ — mostly generated
 scripts/          generate-assets.mjs (sharp pipeline), fetch-changelog.ts, csp-hash-compute.py, csp-hash-patch.py
 .gitea/workflows/deploy.yml   self-hosted Gitea Actions runner: bun build -> rsync to LXC 132
+.github/workflows/deploy.yml  GitHub Actions: bun build -> Cloudflare Pages production
 ```
 
 ## Content source of truth
@@ -55,7 +56,21 @@ When those iOS docs change, update `src/data/features.ts` and any affected compo
 
 ## Deployment
 
-Push to `main` triggers `.gitea/workflows/deploy.yml` on a self-hosted runner: `bun install --frozen-lockfile` -> `bun run build` -> rsync `dist/` to LXC 132 (`/var/www/pulse-site/`) -> `chown caddy:caddy` + `systemctl restart caddy` -> smoke-probes 5 pages, fails closed on any non-200. Cloudflare tunnel `phobos-home` routes `truenaspulse.com` to the LXC 132 Caddy instance. Deployment is automatic on push — no manual deploy step to run locally.
+Push `main` to Gitea `phobos/truenas-pulse-site`; its mirror updates GitHub
+`Phobos-cc/truenas-pulse-site`. Both workflows deploy automatically:
+
+- Public `https://truenaspulse.com` is served by **Cloudflare Pages**, project
+  `truenas-pulse-site`. `.github/workflows/deploy.yml` builds with Bun and uses
+  `cloudflare/wrangler-action` with the existing GitHub Cloudflare API secret.
+- `.gitea/workflows/deploy.yml` maintains the homelab origin copy: Bun build,
+  rsync `dist/` to LXC 132 (`192.168.0.93:/var/www/pulse-site/`), Caddy ownership
+  and CSP hash update, validation/reload, then six origin smoke probes.
+
+The legacy `pulse.phobos-cc.be` address redirects to production. Do not claim
+public publication from an origin build alone: verify the GitHub workflow and
+live public copy. Preserve source commits/build hashes and back up the origin
+site plus `/etc/caddy/Caddyfile` before changing that origin. Full deployment
+details are in `README.md`. No local manual deploy is normally required.
 
 ## Trademark note
 

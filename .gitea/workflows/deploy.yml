@@ -89,10 +89,12 @@ jobs:
           ssh -i "$HOME/.ssh/pulse-deploy" -o StrictHostKeyChecking=no "root@${DEPLOY_HOST}"             "python3 /tmp/csp-hash-patch.py /tmp/csp-hashes.txt              && caddy validate --config /etc/caddy/Caddyfile              && systemctl restart caddy              && rm -f /tmp/csp-hashes.txt /tmp/csp-hash-patch.py"
 
       - name: Smoke probe
+        env:
+          DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
         run: |
           set -euo pipefail
           for path in / /features /pro /privacy /faq /support; do
-            code=$(curl -sS -o /dev/null -w '%{http_code}' "https://pulse.phobos-cc.be$path")
+            code=$(curl -sS -o /dev/null -w '%{http_code}' -H "Host: truenaspulse.com" "http://${DEPLOY_HOST}$path")
             echo "  $path -> $code"
             test "$code" = "200"
           done
