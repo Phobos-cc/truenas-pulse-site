@@ -138,20 +138,6 @@ const og = new URL(ogImage, site.origin).toString();
         ],
       })}
     />
-
-    {/*
-      Self-hosted Plausible Analytics — served directly from analytics.phobos-cc.be
-      (Plausible CE on LXC 132). Cookieless, no personal data, no cross-site
-      tracking, GDPR-compliant. Used only for aggregate site traffic; the iOS app
-      itself has no analytics or telemetry whatsoever.
-    */}
-    <script
-      is:inline
-      defer
-      data-domain="truenaspulse.com"
-      data-api="https://analytics.phobos-cc.be/api/event"
-      src="https://analytics.phobos-cc.be/js/script.js"
-    ></script>
   </head>
   <body class="font-sans text-text antialiased">
     <a

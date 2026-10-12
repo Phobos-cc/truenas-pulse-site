@@ -22,7 +22,7 @@ with open(caddy_path) as f:
 quoted = " ".join(f"'{h}'" for h in hashes)
 script_src_replacement = (
     f"script-src 'self' {quoted} "
-    "https://analytics.phobos-cc.be https://static.cloudflareinsights.com"
+    "https://static.cloudflareinsights.com"
 )
 script_pattern = r"script-src 'self'[^;]*https://static\.cloudflareinsights\.com"
 if not re.search(script_pattern, c):
