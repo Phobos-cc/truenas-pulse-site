@@ -21,7 +21,7 @@ src/
                  FeatureGrid, TierCompare, PillarStrip, CallToAction,
                  MotionReveal, Section, AppStoreButton
   pages/         index.astro, features.astro, screenshots.astro, pro.astro,
-                 faq.astro, changelog.astro, contact.astro, 404.astro,
+                 faq.astro, changelog.astro, contact.astro, support.astro, 404.astro,
                  privacy.mdx, terms.mdx, eula.mdx
   data/          site.ts (identity copy, links), features.ts (26-feature canon)
   styles/        global.css (single @theme + tiny utilities)
@@ -40,6 +40,7 @@ scripts/
 ```bash
 bun install
 bun run dev          # http://localhost:4321 with hot reload
+bun run check        # Astro/TypeScript diagnostics
 bun run build        # static build into ./dist
 bun run preview      # serve ./dist for a local production preview
 ```
@@ -67,6 +68,27 @@ docs:
 When the iOS docs change, update `src/data/features.ts` and any affected
 component copy. The brand voice is **calm, deliberate, infrastructure-grade —
 never playful**.
+
+## Copy and presentation checks
+
+Free includes monitoring for up to 2 servers, one local monitor on the active
+server, and manual snapshot creation. Pro supports up to 8 servers and adds
+fleet tools, longer reporting history, and guarded administration, including
+snapshot deletion, cloning, and rollback. Purchase prices are localized by the
+App Store. Cloud Push is retired; current pages must not promote the relay.
+Historical changelog entries remain explicitly marked as retired.
+
+The header switches to its mobile menu below the `lg` breakpoint. Maintain
+44-pixel mobile tap targets, visible keyboard focus, and Escape-to-close behavior.
+The Free/Pro comparison must wrap on small screens and retain its table caption,
+row/column headings, and accessible inclusion labels. The support form reminds
+users to omit API tokens and passwords.
+
+Before publishing, run `bun run check` and `bun run build`. Review the built
+homepage, Pro comparison, and support page at desktop, tablet, and phone widths.
+Use a fresh isolated browser profile when validating on the user's machine.
+Check horizontal overflow, visible image loading, menu/Escape behavior, and
+page runtime errors. Do not submit a real support message as a layout check.
 
 ## Deployment
 
