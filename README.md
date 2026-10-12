@@ -115,6 +115,14 @@ published the change. Verify the GitHub Actions run and live public pages before
 claiming a completed publication; preserve the source commit and build hashes.
 Back up `/var/www/pulse-site/` and `/etc/caddy/Caddyfile` before changing the origin.
 
+The origin (LXC 132, PROX-WEB) runs only Caddy serving the static build; it reaches
+the internet through the `phobos-home` Cloudflare tunnel, so Caddy trusts
+`192.168.0.73`, `192.168.0.74` and the Cloudflare ranges for client IPs. Since
+2026-10-12 there is no analytics and no server-side endpoint: the self-hosted
+Plausible stack, the `support-api` service (`/api/support`) and Docker/Bun were
+removed. Their files are kept under `/root/retired/` on the container, and a
+protected PBS snapshot noted `pre-plausible-removal` holds the earlier state.
+
 ## Trademark
 
 TrueNAS® is a registered trademark of iXsystems, Inc. TrueNAS Pulse is an

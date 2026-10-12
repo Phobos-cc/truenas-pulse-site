@@ -65,6 +65,8 @@ Push `main` to Gitea `phobos/truenas-pulse-site`; its mirror updates GitHub
 - `.gitea/workflows/deploy.yml` maintains the homelab origin copy: Bun build,
   rsync `dist/` to LXC 132 (`192.168.0.93:/var/www/pulse-site/`), Caddy ownership
   and CSP hash update, validation/reload, then six origin smoke probes.
+  The origin is static Caddy only: no analytics, no `/api/support` (the support
+  form drafts a `mailto:`), no Docker or Bun. See README → Deployment.
 
 The legacy `pulse.phobos-cc.be` address redirects to production. Do not claim
 public publication from an origin build alone: verify the GitHub workflow and
