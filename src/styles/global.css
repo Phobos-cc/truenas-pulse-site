@@ -10,14 +10,14 @@
  */
 @theme {
   /* ── Surface hierarchy (dark-first) ─────────────────────────── */
-  --color-bg: oklch(0.14 0.014 250);                /* near-black, app background analogue */
-  --color-bg-elevated: oklch(0.175 0.016 250);      /* groupedBackground */
-  --color-surface: oklch(0.205 0.018 250);           /* card / row fill */
-  --color-surface-raised: oklch(0.25 0.018 250);   /* sheets, modal cards */
-  --color-surface-membership: oklch(0.23 0.018 250); /* monetization cards */
+  --color-bg: oklch(0.145 0.022 248);                /* near-black, app background analogue */
+  --color-bg-elevated: oklch(0.17 0.026 248);      /* groupedBackground */
+  --color-surface: oklch(0.19 0.032 246);           /* card / row fill */
+  --color-surface-raised: oklch(0.215 0.036 245);   /* sheets, modal cards */
+  --color-surface-membership: oklch(0.205 0.034 246); /* monetization cards */
 
-  --color-stroke-soft: oklch(1 0 0 / 0.06);
-  --color-stroke-strong: oklch(1 0 0 / 0.10);
+  --color-stroke-soft: oklch(0.78 0.06 240 / 0.12);
+  --color-stroke-strong: oklch(0.80 0.07 240 / 0.20);
 
   /* ── Text ───────────────────────────────────────────────────── */
   --color-text: oklch(1 0 0 / 0.96);
