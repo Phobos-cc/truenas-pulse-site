@@ -83,6 +83,8 @@ The header switches to its mobile menu below the `lg` breakpoint. Maintain
 The Free/Pro comparison must wrap on small screens and retain its table caption,
 row/column headings, and accessible inclusion labels. The support form reminds
 users to omit API tokens and passwords.
+It has no server endpoint: submitting opens a pre-filled `mailto:` draft to
+`support@truenaspulse.com` (subject from the category, body with the app version).
 
 Before publishing, run `bun run check` and `bun run build`. Review the built
 homepage, Pro comparison, and support page at desktop, tablet, and phone widths.
