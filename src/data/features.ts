@@ -89,7 +89,7 @@ export const features: Feature[] = [
     category: "Advanced Control",
     tier: "Pro",
     description:
-      "Manage app workloads on the go. Start, stop, and restart containers remotely.",
+      "Manage TrueNAS apps on the go. Start, stop, and restart them remotely.",
   },
   {
     id: "vmLifecycle",
@@ -195,7 +195,7 @@ export const features: Feature[] = [
     category: "Operator Productivity",
     tier: "Pro",
     description:
-      "Update all apps, start all services, or dismiss all alerts — one tap.",
+      "Update all apps, start stopped services, or run multiple data protection tasks — one tap.",
   },
   {
     id: "alertAcknowledgement",
@@ -243,7 +243,7 @@ export const features: Feature[] = [
     category: "Operator Productivity",
     tier: "Pro",
     description:
-      "Set up once, use everywhere. Server list and monitor configs sync across your devices via iCloud Key-Value Store. API tokens are stored in the Keychain, excluded from sync, and authenticate directly to your configured servers.",
+      "Set up once, use everywhere. Server list, monitor configs, and app settings sync across your devices via iCloud Key-Value Store. API tokens are stored in the Keychain, excluded from sync, and authenticate directly to your configured servers.",
   },
   {
     id: "liveActivities",
