@@ -37,6 +37,11 @@ const toBullets = (whatsNew: string): string[] => {
     lede={`Every public version of ${site.name}, newest first. Pulled directly from the App Store.`}
     width="narrow"
   >
+    <p class="mb-8 rounded-xl border border-stroke-soft bg-surface-raised p-5 text-sm leading-relaxed text-text-secondary">
+      Cloud Push and Push Relay have been retired. Older release notes below are
+      historical records, not a list of currently available features. Notifications
+      are now device-local, with best effort background refresh subject to iOS scheduling.
+    </p>
     <ol class="changelog-list">
       {
         changelog.map((entry, i) => {

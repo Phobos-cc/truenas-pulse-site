@@ -9,7 +9,7 @@ import PrivacyLabel from "~/components/PrivacyLabel.astro";
 
 # Privacy Policy
 
-_Last updated: 2026-05-06_
+_Last updated: 2026-10-12_
 
 TrueNAS Pulse does not collect personal data through analytics, tracking,
 advertising, or crash-reporting SDKs.
@@ -19,14 +19,14 @@ advertising, or crash-reporting SDKs.
 
 ## What the app does
 
-TrueNAS Pulse is **direct by default**. It communicates with the TrueNAS
+TrueNAS Pulse connects **directly to your configured servers**. It communicates with the TrueNAS
 servers that you configure and contains no in-app analytics, tracking,
 advertising, crash-reporting, or generic telemetry SDKs.
 
-If you explicitly enable Cloud Push Relay for background alert notifications,
-limited alert summary data may be routed through the relay only for notification
-delivery. The relay is off by default, configured per server, and API tokens,
-credentials, passwords, and secrets are never sent to it.
+API tokens are used to authenticate requests directly to those servers. Alert
+notifications are generated locally on your device; the app has no remote push
+delivery service. Background refresh is best effort and subject to iOS scheduling,
+so timely alerts are not guaranteed while the app is backgrounded or closed.
 
 ## Data not collected
 
@@ -34,7 +34,7 @@ credentials, passwords, and secrets are never sent to it.
 - No crash reporting services
 - No advertising identifiers
 - No data shared with third parties
-- No background alert relay traffic unless you explicitly opt in per server
+- No remote alert relay traffic
 
 ## Where your data lives
 
@@ -45,11 +45,11 @@ credentials, passwords, and secrets are never sent to it.
   uploaded.
 - If you enable **iCloud Sync** (Pro), your monitor configurations and server
   list sync across your devices via Apple's iCloud Key-Value Store. API
-  tokens never leave the Keychain — iCloud Sync does not transport
-  credentials.
-- If you enable **Cloud Push Relay**, only alert summaries are relayed for
-  push delivery while the app is backgrounded or closed. API tokens,
-  credentials, passwords, and secrets never leave the device.
+  tokens remain stored in the Keychain and are excluded from iCloud Sync.
+  They are used only to authenticate directly to your configured servers.
+- **Alert and monitor notification data** stays on the device. iOS controls when
+  background refresh can run; the app does not continuously monitor servers
+  while closed.
 
 ## App Store privacy details
 

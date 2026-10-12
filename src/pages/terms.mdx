@@ -7,7 +7,7 @@ prose: true
 
 # Terms of Use
 
-_Last updated: 2026-05-02_
+_Last updated: 2026-10-12_
 
 These Terms of Use ("Terms") govern your use of TrueNAS Pulse (the "App"), an
 independent third-party iOS application developed by Christophe Cornelis
@@ -15,11 +15,13 @@ independent third-party iOS application developed by Christophe Cornelis
 
 ## 1. The App
 
-TrueNAS Pulse is an iOS client for TrueNAS SCALE servers. By default, the App
-connects directly to TrueNAS servers that you configure. If you explicitly
-enable Cloud Push Relay for background alert notifications, limited alert
-summary data may be routed through the relay only for notification delivery.
-API tokens, credentials, passwords, and secrets are never sent to the relay.
+TrueNAS Pulse is an iOS client for TrueNAS SCALE servers. The App connects
+directly to TrueNAS servers that you configure, using credentials stored in the
+iOS Keychain to authenticate those requests. Alert notifications are device-local.
+Background refresh depends on iOS scheduling and is best effort; timely alerts
+are not guaranteed while the App is backgrounded or closed. For continuous alert
+delivery independent of the App, configure your TrueNAS server's own alert
+services.
 
 ## 2. Independent third-party application
 

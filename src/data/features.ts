@@ -243,7 +243,7 @@ export const features: Feature[] = [
     category: "Operator Productivity",
     tier: "Pro",
     description:
-      "Set up once, use everywhere. Server list and monitor configs sync across your devices via iCloud Key-Value Store. API tokens never leave the Keychain.",
+      "Set up once, use everywhere. Server list and monitor configs sync across your devices via iCloud Key-Value Store. API tokens are stored in the Keychain, excluded from sync, and authenticate directly to your configured servers.",
   },
   {
     id: "liveActivities",

@@ -23,7 +23,7 @@ const faqs = [
   },
   {
     q: "Does the app talk to anything except my own server?",
-    a: "Direct by default. TrueNAS Pulse talks to the TrueNAS servers you configure and has no in-app analytics, tracking SDKs, advertising SDKs, or generic telemetry endpoint. If you opt in to Cloud Push Relay, it is only used to deliver alert summaries when the app is backgrounded or closed. It is off by default, configured per server, and never receives API tokens, credentials, passwords, or secrets. You can also point the app at a self-hosted relay you run yourself.",
+    a: "TrueNAS Pulse connects directly to the TrueNAS servers you configure and has no in-app analytics, tracking SDKs, advertising SDKs, or generic telemetry endpoint. Apple handles purchases and optional iCloud Sync. Server credentials are stored in the iOS Keychain and used to authenticate directly to your servers. Alert notifications are device-local.",
   },
   {
     q: "Does my server need to be on the public internet?",
@@ -31,11 +31,11 @@ const faqs = [
   },
   {
     q: "Where are my API tokens stored?",
-    a: "Exclusively in the iOS Keychain on your device. They are never synced to iCloud and never leave your phone. iCloud Sync (Pro) syncs your monitor configurations and server list across your own devices via your private iCloud Key-Value Store — credentials are never part of that sync.",
+    a: "API tokens are stored in the iOS Keychain on your device and used to authenticate requests directly to your configured TrueNAS servers. They are excluded from iCloud Sync. iCloud Sync (Pro) syncs your monitor configurations and server list across your own devices via your private iCloud Key-Value Store — credentials are never part of that sync.",
   },
   {
     q: "Will I get notifications when the app is closed?",
-    a: "By default the app delivers device-local notifications when monitors fire while it's running. For alerts that need to reach you while the app is backgrounded or closed, you can opt in to Cloud Push Relay per server. The relay only forwards alert summaries — never API tokens, credentials, passwords, or secrets. You can also self-host the relay if you'd rather not use the built-in one.",
+    a: "The app delivers device-local notifications when alerts or monitors are evaluated. iOS may grant occasional background refresh time, but this is best effort and cannot guarantee timely alerts while the app is backgrounded or closed. The app has no remote push delivery service. Use your TrueNAS server's own alert services for continuous delivery independent of the app.",
   },
   {
     q: "How do self-signed TLS certificates work?",

@@ -143,7 +143,7 @@ const outcomes = [
   <Section
     eyebrow="Security model"
     heading="Your servers, your credentials, your data."
-    lede="Direct by default. No accounts, no in-app analytics, no tracking SDKs. TrueNAS Pulse talks directly to the servers you configure. Optional Cloud Push Relay is off by default and only used for background alert delivery."
+    lede="Direct connection to your servers. No accounts, no in-app analytics, no tracking SDKs. TrueNAS Pulse talks directly to the servers you configure and delivers device-local notifications."
   >
     <MotionReveal>
       <SecurityFlow />
@@ -159,8 +159,8 @@ const outcomes = [
             <li>API tokens stored exclusively in the iOS Keychain — never synced to iCloud.</li>
             <li>Strict TLS validation by default.</li>
             <li>Per-server self-signed certificate opt-in (SHA-256 fingerprint pinning).</li>
-            <li>iCloud Sync (Pro) covers server list + monitors via your own private iCloud — credentials never travel.</li>
-            <li>API tokens, credentials, passwords, and secrets are never sent to the optional Cloud Push Relay.</li>
+            <li>iCloud Sync (Pro) covers server list + monitors via your own private iCloud — credentials are excluded from sync.</li>
+            <li>API tokens authenticate requests directly to the TrueNAS servers you configure.</li>
           </ul>
         </div>
       </MotionReveal>
