@@ -8,7 +8,7 @@ import { site } from "~/data/site";
   title="Support"
   description="Report a bug or send feedback for TrueNAS Pulse. We read every submission."
 >
-  <Section eyebrow="Get help" heading="Report a bug or send feedback." width="narrow">
+  <Section eyebrow="Get help" heading="Report a bug or send feedback." headingLevel="h1" width="narrow">
     <div class="space-y-8">
 
       <!-- Form -->
@@ -26,7 +26,7 @@ import { site } from "~/data/site";
             id="category"
             name="category"
             required
-            class="w-full rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+            class="min-h-11 w-full rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
           >
             <option value="" disabled selected>Choose a category…</option>
             <option value="bug">Bug report — something is broken</option>
@@ -48,6 +48,7 @@ import { site } from "~/data/site";
             required
             minlength="10"
             maxlength="4000"
+            aria-describedby="char-count support-privacy"
             placeholder="Describe the issue or feedback in as much detail as you like. For bugs: what you expected, what happened, and steps to reproduce help a lot."
             class="w-full resize-y rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text placeholder:text-text-secondary/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
           ></textarea>
@@ -65,7 +66,7 @@ import { site } from "~/data/site";
               id="email"
               name="email"
               placeholder="you@example.com"
-              class="w-full rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text placeholder:text-text-secondary/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+              class="min-h-11 w-full rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text placeholder:text-text-secondary/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
             />
             <p class="mt-1 text-xs text-text-secondary">Only if you want a reply.</p>
           </div>
@@ -79,7 +80,7 @@ import { site } from "~/data/site";
               name="app_version"
               placeholder={`e.g. ${site.latestVersion}`}
               maxlength="20"
-              class="w-full rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text placeholder:text-text-secondary/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
+              class="min-h-11 w-full rounded-lg border border-stroke-soft bg-bg px-3 py-2.5 text-sm text-text placeholder:text-text-secondary/50 transition-colors focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/20"
             />
             <p class="mt-1 text-xs text-text-secondary">Settings → About in the app.</p>
           </div>
@@ -92,11 +93,16 @@ import { site } from "~/data/site";
           class="hidden rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400"
         ></div>
 
+        <p id="support-privacy" class="text-sm leading-relaxed text-text-secondary">
+          This form sends the details you enter to support. Please leave out API
+          tokens, passwords, and other secrets.
+        </p>
+
         <!-- Submit -->
         <button
           type="submit"
           id="submit-btn"
-          class="inline-flex items-center gap-2 rounded-lg bg-text px-5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
+          class="inline-flex min-h-11 items-center gap-2 rounded-lg bg-text px-5 py-2.5 text-sm font-medium text-bg transition-opacity hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-50"
         >
           <span id="submit-label">Send</span>
           <svg id="submit-spinner" class="hidden h-4 w-4 animate-spin" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -118,7 +124,7 @@ import { site } from "~/data/site";
         </p>
         <button
           id="send-another"
-          class="mt-5 text-sm text-accent transition-colors hover:text-accent-hover"
+          class="mt-5 min-h-11 rounded-lg px-3 text-sm text-accent transition-colors hover:text-accent-hover"
         >
           Send another
         </button>
@@ -148,7 +154,7 @@ import { site } from "~/data/site";
   const errorBanner = document.getElementById("form-error") as HTMLDivElement;
   const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
   const submitLabel = document.getElementById("submit-label") as HTMLSpanElement;
-  const submitSpinner = document.getElementById("submit-spinner") as SVGElement;
+  const submitSpinner = document.querySelector<SVGSVGElement>("#submit-spinner");
   const charCount = document.getElementById("char-count") as HTMLParagraphElement;
   const textarea = document.getElementById("description") as HTMLTextAreaElement;
   const sendAnother = document.getElementById("send-another") as HTMLButtonElement;
@@ -173,7 +179,7 @@ import { site } from "~/data/site";
   function setLoading(on: boolean) {
     submitBtn.disabled = on;
     submitLabel.textContent = on ? "Sending…" : "Send";
-    submitSpinner.classList.toggle("hidden", !on);
+    submitSpinner?.classList.toggle("hidden", !on);
   }
 
   form?.addEventListener("submit", async (e) => {

@@ -167,3 +167,9 @@ body::before {
   background: oklch(0.62 0.16 235 / 0.32);
   color: var(--color-text);
 }
+
+/* Keep keyboard navigation visible across shared links and controls. */
+:where(a, button, summary):focus-visible {
+  outline: 2px solid var(--color-accent-hover);
+  outline-offset: 4px;
+}

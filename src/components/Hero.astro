@@ -6,9 +6,10 @@ import DeviceFrame from "~/components/DeviceFrame.astro";
 
 <section class="relative device-stage">
   <div
-    class="relative z-10 mx-auto max-w-6xl px-5 pt-20 pb-24 sm:pt-28 sm:pb-32 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-16"
+    class="relative z-10 mx-auto max-w-6xl px-5 pt-12 pb-14 sm:pt-28 sm:pb-32 lg:grid lg:grid-cols-[minmax(0,1fr)_auto] lg:items-center lg:gap-16"
   >
     <div class="reveal-init">
+      <p class="mb-4 text-sm font-medium text-text-secondary">TrueNAS SCALE · Native iPhone app</p>
       <h1
         class="text-balance text-[clamp(2.25rem,6vw,4rem)] font-semibold leading-[1.05] tracking-[-0.02em] text-text"
       >
@@ -58,8 +59,9 @@ import DeviceFrame from "~/components/DeviceFrame.astro";
       <p
         class="mt-4 max-w-xl text-pretty text-base leading-relaxed text-text-secondary sm:text-lg"
       >
-        A native third-party TrueNAS SCALE iPhone app with live health,
-        alerts, storage visibility, widgets, and guarded remote actions.
+        Check pool health, find the alert that matters, and see what your server
+        is doing. Start with free monitoring for two servers; add Pro when you
+        need fleet insight and guarded remote actions.
       </p>
 
       <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -68,7 +70,7 @@ import DeviceFrame from "~/components/DeviceFrame.astro";
           href="/features"
           class="inline-flex items-center gap-1.5 rounded-lg border border-stroke-strong px-5 py-3.5 text-sm font-medium text-text transition-colors hover:bg-surface/60"
         >
-          See features
+          Explore features
           <svg
             width="14"
             height="14"
@@ -117,7 +119,7 @@ import DeviceFrame from "~/components/DeviceFrame.astro";
       </ul>
     </div>
 
-    <div class="reveal-init mt-16 flex justify-center lg:mt-0" data-reveal-delay="180">
+    <div class="reveal-init mt-10 flex justify-center lg:mt-0" data-reveal-delay="180">
       <DeviceFrame
         ariaLabel="TrueNAS Pulse TrueNAS SCALE iPhone app dashboard — Goldeye server, READY, 22.3 of 33.2 TB used, CPU 4 percent, memory 78 percent, storage healthy"
         realScreenshot

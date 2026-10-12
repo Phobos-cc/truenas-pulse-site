@@ -40,14 +40,14 @@ const rows: Row[] = [
   { label: "iCloud Sync · Live Activities", free: "—", pro: true },
 ];
 
-const cell = (val: string | true) => (val === true ? "✓" : val);
+const cell = (val: string | true) => (val === true ? "✓" : val === "—" ? "Not included" : val);
 ---
 
 <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
   {/* Free */}
   <div class="card tier-card tier-card-free relative rounded-2xl border border-stroke-soft p-7">
     <span
-      class="tier-badge tier-badge-free absolute right-4 top-4 rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider"
+      class="tier-badge tier-badge-free mb-5 inline-flex rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider"
     >
       Free, genuinely
     </span>
@@ -56,7 +56,7 @@ const cell = (val: string | true) => (val === true ? "✓" : val);
         TrueNAS Pulse
       </p>
       <h3 class="text-2xl font-semibold tracking-tight text-text">
-        Useful forever monitoring
+        Everyday monitoring
       </h3>
       <p class="mt-2 text-sm leading-relaxed text-text-secondary">
         Monitor your own TrueNAS setup for up to 2 servers. No trial, no demo
@@ -108,7 +108,7 @@ const cell = (val: string | true) => (val === true ? "✓" : val);
     class="card tier-card tier-card-pro relative rounded-2xl border border-accent/40 p-7 shadow-[0_0_50px_-22px_oklch(0.62_0.16_235/0.35)]"
   >
     <span
-      class="tier-badge tier-badge-pro absolute right-4 top-4 rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider"
+      class="tier-badge tier-badge-pro mb-5 inline-flex rounded-full px-2.5 py-1 text-[11px] font-medium uppercase tracking-wider"
     >
       Lifetime · Pay once
     </span>
@@ -120,9 +120,8 @@ const cell = (val: string | true) => (val === true ? "✓" : val);
         More servers · deeper tools
       </h3>
       <p class="mt-2 text-sm leading-relaxed text-text-secondary">
-        For serious operators managing more servers, investigating incidents,
-        and using advanced guarded actions. One-time purchase — no subscription,
-        no expiry.
+        Compare servers, trace incidents, and take advanced guarded actions.
+        One-time purchase — no subscription, no expiry.
       </p>
     </header>
     <div class="mb-6 grid grid-cols-2 gap-2">
@@ -154,12 +153,13 @@ const cell = (val: string | true) => (val === true ? "✓" : val);
 <div
   class="card compare-table-card mt-10 overflow-hidden rounded-xl border border-stroke-soft"
 >
-  <table class="compare-table w-full text-sm">
+  <table class="compare-table w-full table-fixed text-sm">
+    <caption class="sr-only">TrueNAS Pulse Free and Pro feature comparison</caption>
     <thead class="border-b border-stroke-soft text-xs uppercase tracking-[0.12em] text-text-tertiary">
       <tr>
-        <th class="px-5 py-2.5 text-left font-medium">Feature</th>
-        <th class="whitespace-nowrap px-5 py-2.5 text-center font-medium">Free</th>
-        <th class="whitespace-nowrap px-5 py-2.5 text-center font-medium">Pro</th>
+        <th scope="col" class="w-[42%] px-3 py-3 text-left font-medium sm:px-5">Feature</th>
+        <th scope="col" class="w-[29%] px-3 py-3 text-center font-medium sm:px-5">Free</th>
+        <th scope="col" class="w-[29%] px-3 py-3 text-center font-medium sm:px-5">Pro</th>
       </tr>
     </thead>
     <tbody>
@@ -175,17 +175,17 @@ const cell = (val: string | true) => (val === true ? "✓" : val);
               i % 2 === 1 && "bg-[oklch(1_0_0_/_0.025)]",
             ]}
           >
-            <td class="px-5 py-2.5 text-text-secondary">{row.label}</td>
+            <th scope="row" class="px-3 py-3 text-left font-normal text-text-secondary sm:px-5">{row.label}</th>
             <td
               class:list={[
-                "compare-value whitespace-nowrap px-5 py-2.5 text-center",
+                "compare-value px-3 py-3 text-center sm:px-5",
                 row.free === "—" ? "text-text-tertiary" : "text-text",
               ]}
             >
-              {row.free === true ? <span class="compare-check">✓</span> : cell(row.free)}
+              {row.free === true ? <span class="compare-check"><span aria-hidden="true">✓</span><span class="sr-only">Included</span></span> : cell(row.free)}
             </td>
-            <td class="compare-value whitespace-nowrap px-5 py-2.5 text-center text-text">
-              {row.pro === true ? <span class="compare-check">✓</span> : cell(row.pro)}
+            <td class="compare-value px-3 py-3 text-center sm:px-5 text-text">
+              {row.pro === true ? <span class="compare-check"><span aria-hidden="true">✓</span><span class="sr-only">Included</span></span> : cell(row.pro)}
             </td>
           </tr>
         ))
@@ -261,6 +261,12 @@ const cell = (val: string | true) => (val === true ? "✓" : val);
 
   .compare-table tbody tr:hover {
     background: oklch(from var(--color-accent) l c h / 0.055);
+  }
+
+  .compare-table th,
+  .compare-table td {
+    overflow-wrap: anywhere;
+    vertical-align: top;
   }
 
   .compare-value {

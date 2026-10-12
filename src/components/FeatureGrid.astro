@@ -50,16 +50,16 @@ const iconBgClass = (tier: Feature["tier"]) => {
   withHeadings
     ? Object.entries(grouped).map(([cat, list]) => (
         <div class="mb-16 last:mb-0">
-          <h3 class="mb-1 text-lg font-semibold tracking-tight text-text">
+          <h2 class="mb-1 text-lg font-semibold tracking-tight text-text">
             {cat}
-          </h3>
+          </h2>
           <p class="mb-6 text-sm text-text-tertiary">
             {cat === "Scale" &&
               "Visibility and monitor reach across every TrueNAS you operate."}
             {cat === "Advanced Control" &&
-              "Lifecycle and configuration mutation, gated by Control Mode and biometric confirmation."}
+              "Run deliberate remote actions with Control Mode, confirmation, and extra safeguards for high-risk changes."}
             {cat === "Operator Productivity" &&
-              "Everyday leverage — debugging, history, sync, and live insight."}
+              "Investigate with logs and history, keep devices in sync, and follow active jobs."}
           </p>
           <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {list.map((f, i) => (

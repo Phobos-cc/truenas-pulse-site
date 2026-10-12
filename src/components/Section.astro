@@ -32,7 +32,7 @@ const HeadingTag = headingLevel;
   id={id}
   class:list={[
     "px-5",
-    tight ? "py-12 sm:py-16" : "py-16 sm:py-24 lg:py-32",
+    tight ? "py-10 sm:py-16" : "py-12 sm:py-24 lg:py-32",
     className,
   ]}
 >
@@ -44,7 +44,7 @@ const HeadingTag = headingLevel;
   >
     {
       (eyebrow || heading || lede) && (
-        <div class="mb-10 sm:mb-14">
+        <div class="mb-8 sm:mb-14">
           {eyebrow && (
             <p class="mb-3 text-xs font-medium uppercase tracking-[0.18em] text-text-tertiary">
               {eyebrow}
